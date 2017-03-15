@@ -5,7 +5,7 @@ import static com.github.moreaunicolas.katas.gildedrose.ItemOperations.*;
 class DefaultUpdatePolicy implements UpdatePolicy {
 
     @Override
-    public void update(Item item) {
+    public final void update(Item item) {
         decreaseSellIn(item);
         updateQuality(item);
         if (isAfterSellInDate(item)) {
