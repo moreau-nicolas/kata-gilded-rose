@@ -15,6 +15,10 @@ public class GildedRose {
 
             if (isAgedBrie(item)) {
                 increaseQuality(item);
+
+                if (isAfterSellInDate(item)) {
+                    increaseQuality(item);
+                }
             } else if (isBackstagePass(item)) {
                 increaseQuality(item);
                 if (item.sellIn < 10) {
@@ -23,16 +27,14 @@ public class GildedRose {
                 if (item.sellIn < 5) {
                     increaseQuality(item);
                 }
+
+                if (isAfterSellInDate(item)) {
+                    item.quality = 0;
+                }
             } else {
                 decreaseQuality(item);
-            }
 
-            if (isAfterSellInDate(item)) {
-                if (isAgedBrie(item)) {
-                    increaseQuality(item);
-                } else if (isBackstagePass(item)) {
-                    item.quality = 0;
-                } else {
+                if (isAfterSellInDate(item)) {
                     decreaseQuality(item);
                 }
             }
