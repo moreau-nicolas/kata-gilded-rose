@@ -13,23 +13,23 @@ public class GildedRose {
                     && !isBackstagePass(item)) {
                 if (item.quality > 0) {
                     if (!isSulfuras(item)) {
-                        item.quality = item.quality - 1;
+                        item.quality -= 1;
                     }
                 }
             } else {
                 if (item.quality < 50) {
-                    item.quality = item.quality + 1;
+                    item.quality += 1;
 
                     if (isBackstagePass(item)) {
                         if (item.sellIn < 11) {
                             if (item.quality < 50) {
-                                item.quality = item.quality + 1;
+                                item.quality += 1;
                             }
                         }
 
                         if (item.sellIn < 6) {
                             if (item.quality < 50) {
-                                item.quality = item.quality + 1;
+                                item.quality += 1;
                             }
                         }
                     }
@@ -37,7 +37,7 @@ public class GildedRose {
             }
 
             if (!isSulfuras(item)) {
-                item.sellIn = item.sellIn - 1;
+                item.sellIn -= 1;
             }
 
             if (item.sellIn < 0) {
@@ -45,7 +45,7 @@ public class GildedRose {
                     if (!isBackstagePass(item)) {
                         if (item.quality > 0) {
                             if (!isSulfuras(item)) {
-                                item.quality = item.quality - 1;
+                                item.quality -= 1;
                             }
                         }
                     } else {
@@ -53,7 +53,7 @@ public class GildedRose {
                     }
                 } else {
                     if (item.quality < 50) {
-                        item.quality = item.quality + 1;
+                        item.quality += 1;
                     }
                 }
             }
