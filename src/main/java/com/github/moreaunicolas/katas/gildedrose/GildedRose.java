@@ -25,9 +25,9 @@ public class GildedRose {
                 decreaseQuality(item);
             }
 
-            item.sellIn -= 1;
+            decreaseSellIn(item);
 
-            if (item.sellIn < 0) {
+            if (isAfterSellInDate(item)) {
                 if (isAgedBrie(item)) {
                     increaseQuality(item);
                 } else if (isBackstagePass(item)) {
@@ -37,6 +37,14 @@ public class GildedRose {
                 }
             }
         }
+    }
+
+    private static void decreaseSellIn(Item item) {
+        item.sellIn -= 1;
+    }
+
+    private static boolean isAfterSellInDate(Item item) {
+        return item.sellIn < 0;
     }
 
     private static void increaseQuality(Item item) {
