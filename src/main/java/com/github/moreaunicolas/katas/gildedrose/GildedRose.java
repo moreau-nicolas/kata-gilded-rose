@@ -22,9 +22,7 @@ public class GildedRose {
                     }
                 }
             } else {
-                if (item.quality > 0) {
-                    item.quality -= 1;
-                }
+                decreaseQuality(item);
             }
 
             item.sellIn -= 1;
@@ -35,9 +33,7 @@ public class GildedRose {
                 } else if (isBackstagePass(item)) {
                     item.quality = 0;
                 } else {
-                    if (item.quality > 0) {
-                        item.quality -= 1;
-                    }
+                    decreaseQuality(item);
                 }
             }
         }
@@ -46,6 +42,12 @@ public class GildedRose {
     private static void increaseQuality(Item item) {
         if (item.quality < 50) {
             item.quality += 1;
+        }
+    }
+
+    private static void decreaseQuality(Item item) {
+        if (item.quality > 0) {
+            item.quality -= 1;
         }
     }
 
