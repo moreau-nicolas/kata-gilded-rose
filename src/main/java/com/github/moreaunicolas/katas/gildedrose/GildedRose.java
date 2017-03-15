@@ -1,7 +1,7 @@
 package com.github.moreaunicolas.katas.gildedrose;
 
-class GildedRose {
-    Item[] items;
+public class GildedRose {
+    final Item[] items;
 
     public GildedRose(Item[] items) {
         this.items = items;
