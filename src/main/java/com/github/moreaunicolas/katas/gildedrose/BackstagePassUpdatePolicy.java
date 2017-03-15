@@ -4,9 +4,10 @@ import static com.github.moreaunicolas.katas.gildedrose.ItemOperations.decreaseS
 import static com.github.moreaunicolas.katas.gildedrose.ItemOperations.increaseQuality;
 import static com.github.moreaunicolas.katas.gildedrose.ItemOperations.isAfterSellInDate;
 
-class BackstagePassUpdatePolicy {
+class BackstagePassUpdatePolicy implements UpdatePolicy {
 
-    static void update(Item item) {
+    @Override
+    public void update(Item item) {
         decreaseSellIn(item);
         increaseQuality(item);
         if (item.sellIn < 10) {

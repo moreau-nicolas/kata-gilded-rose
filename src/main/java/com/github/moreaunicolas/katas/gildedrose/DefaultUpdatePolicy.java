@@ -4,9 +4,10 @@ import static com.github.moreaunicolas.katas.gildedrose.ItemOperations.decreaseQ
 import static com.github.moreaunicolas.katas.gildedrose.ItemOperations.decreaseSellIn;
 import static com.github.moreaunicolas.katas.gildedrose.ItemOperations.isAfterSellInDate;
 
-class DefaultUpdatePolicy {
+class DefaultUpdatePolicy implements UpdatePolicy {
 
-    static void update(Item item) {
+    @Override
+    public void update(Item item) {
         decreaseSellIn(item);
         decreaseQuality(item);
         if (isAfterSellInDate(item)) {

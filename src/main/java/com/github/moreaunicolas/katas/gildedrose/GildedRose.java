@@ -9,15 +9,17 @@ public class GildedRose {
 
     public void updateQuality() {
         for (Item item : items) {
+            UpdatePolicy updatePolicy;
             if (isSulfuras(item)) {
-                SulfurasUpdatePolicy.update(item);
+                updatePolicy = new SulfurasUpdatePolicy();
             } else if (isAgedBrie(item)) {
-                AgedBrieUpdatePolicy.update(item);
+                updatePolicy = new AgedBrieUpdatePolicy();
             } else if (isBackstagePass(item)) {
-                BackstagePassUpdatePolicy.update(item);
+                updatePolicy = new BackstagePassUpdatePolicy();
             } else {
-                DefaultUpdatePolicy.update(item);
+                updatePolicy = new DefaultUpdatePolicy();
             }
+            updatePolicy.update(item);
         }
     }
 

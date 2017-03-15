@@ -1,8 +1,9 @@
 package com.github.moreaunicolas.katas.gildedrose;
 
-class SulfurasUpdatePolicy {
+class SulfurasUpdatePolicy implements UpdatePolicy {
 
-    static void update(Item unused) {
+    @Override
+    public void update(Item unused) {
         // Legendary items never change!
     }
 }
