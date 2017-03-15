@@ -11,21 +11,21 @@ public class GildedRose {
         for (Item item : items) {
             if (isSulfuras(item)) continue;
 
+            decreaseSellIn(item);
+
             if (isAgedBrie(item)) {
                 increaseQuality(item);
             } else if (isBackstagePass(item)) {
                 increaseQuality(item);
-                if (item.sellIn < 11) {
+                if (item.sellIn < 10) {
                     increaseQuality(item);
                 }
-                if (item.sellIn < 6) {
+                if (item.sellIn < 5) {
                     increaseQuality(item);
                 }
             } else {
                 decreaseQuality(item);
             }
-
-            decreaseSellIn(item);
 
             if (isAfterSellInDate(item)) {
                 if (isAgedBrie(item)) {
