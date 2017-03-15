@@ -1,7 +1,5 @@
 package com.github.moreaunicolas.katas.gildedrose;
 
-import static com.github.moreaunicolas.katas.gildedrose.ItemOperations.*;
-
 public class GildedRose {
     final Item[] items;
 
@@ -12,48 +10,14 @@ public class GildedRose {
     public void updateQuality() {
         for (Item item : items) {
             if (isSulfuras(item)) {
-                updateSulfuras(item);
+                SulfurasUpdatePolicy.update(item);
             } else if (isAgedBrie(item)) {
-                updateAgedBrie(item);
+                AgedBrieUpdatePolicy.update(item);
             } else if (isBackstagePass(item)) {
-                updateBackstagePass(item);
+                BackstagePassUpdatePolicy.update(item);
             } else {
-                updateDefault(item);
+                DefaultUpdatePolicy.update(item);
             }
-        }
-    }
-
-    private static void updateSulfuras(Item unused) {
-        // Legendary items never change!
-    }
-
-    private static void updateAgedBrie(Item item) {
-        decreaseSellIn(item);
-        increaseQuality(item);
-        if (isAfterSellInDate(item)) {
-            increaseQuality(item);
-        }
-    }
-
-    private static void updateBackstagePass(Item item) {
-        decreaseSellIn(item);
-        increaseQuality(item);
-        if (item.sellIn < 10) {
-            increaseQuality(item);
-        }
-        if (item.sellIn < 5) {
-            increaseQuality(item);
-        }
-        if (isAfterSellInDate(item)) {
-            item.quality = 0;
-        }
-    }
-
-    private static void updateDefault(Item item) {
-        decreaseSellIn(item);
-        decreaseQuality(item);
-        if (isAfterSellInDate(item)) {
-            decreaseQuality(item);
         }
     }
 
