@@ -9,9 +9,17 @@ class AgedBrieUpdatePolicy implements UpdatePolicy {
     @Override
     public void update(Item item) {
         decreaseSellIn(item);
-        increaseQuality(item);
+        updateQuality(item);
         if (isAfterSellInDate(item)) {
-            increaseQuality(item);
+            updateQualityAfterSellInDate(item);
         }
+    }
+
+    void updateQuality(Item item) {
+        increaseQuality(item);
+    }
+
+    void updateQualityAfterSellInDate(Item item) {
+        updateQuality(item);
     }
 }
