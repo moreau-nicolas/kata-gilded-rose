@@ -2,18 +2,24 @@ package com.github.moreaunicolas.katas.gildedrose;
 
 class UpdatePolicies {
 
+    private static final UpdatePolicy
+        DEFAULT = new DefaultUpdatePolicy(),
+        SULFURAS = new SulfurasUpdatePolicy(),
+        AGED_BRIE = new AgedBrieUpdatePolicy(),
+        BACKSTAGE_PASS = new BackstagePassUpdatePolicy(),
+        CONJURED_ITEM = new ConjuredItemUpdatePolicy();
+
     UpdatePolicy findApplicableUpdatePolicy(Item item) {
-        UpdatePolicy updatePolicy = new DefaultUpdatePolicy();
         if (isSulfuras(item)) {
-            updatePolicy = new SulfurasUpdatePolicy();
+            return SULFURAS;
         } else if (isAgedBrie(item)) {
-            updatePolicy = new AgedBrieUpdatePolicy();
+            return AGED_BRIE;
         } else if (isBackstagePass(item)) {
-            updatePolicy = new BackstagePassUpdatePolicy();
+            return BACKSTAGE_PASS;
         } else if (isConjured(item)) {
-            updatePolicy = new ConjuredItemUpdatePolicy();
+            return CONJURED_ITEM;
         }
-        return updatePolicy;
+        return DEFAULT;
     }
 
     private static boolean isAgedBrie(Item item) {
