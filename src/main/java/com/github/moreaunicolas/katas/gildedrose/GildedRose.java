@@ -9,9 +9,9 @@ public class GildedRose {
 
     public void updateQuality() {
         for (Item item : items) {
-            if (isSulfuras(item)) continue;
-
-            if (isAgedBrie(item)) {
+            if (isSulfuras(item)) {
+                // Legendary items never change!
+            } else if (isAgedBrie(item)) {
                 decreaseSellIn(item);
                 increaseQuality(item);
 
