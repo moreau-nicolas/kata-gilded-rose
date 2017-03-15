@@ -1,5 +1,7 @@
 package com.github.moreaunicolas.katas.gildedrose;
 
+import static com.github.moreaunicolas.katas.gildedrose.ItemOperations.*;
+
 public class GildedRose {
     final Item[] items;
 
@@ -52,26 +54,6 @@ public class GildedRose {
         decreaseQuality(item);
         if (isAfterSellInDate(item)) {
             decreaseQuality(item);
-        }
-    }
-
-    private static void decreaseSellIn(Item item) {
-        item.sellIn -= 1;
-    }
-
-    private static boolean isAfterSellInDate(Item item) {
-        return item.sellIn < 0;
-    }
-
-    private static void increaseQuality(Item item) {
-        if (item.quality < 50) {
-            item.quality += 1;
-        }
-    }
-
-    private static void decreaseQuality(Item item) {
-        if (item.quality > 0) {
-            item.quality -= 1;
         }
     }
 
