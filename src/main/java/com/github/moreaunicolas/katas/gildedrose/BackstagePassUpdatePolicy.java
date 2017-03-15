@@ -1,14 +1,11 @@
 package com.github.moreaunicolas.katas.gildedrose;
 
-import static com.github.moreaunicolas.katas.gildedrose.ItemOperations.decreaseSellIn;
 import static com.github.moreaunicolas.katas.gildedrose.ItemOperations.increaseQuality;
-import static com.github.moreaunicolas.katas.gildedrose.ItemOperations.isAfterSellInDate;
 
-class BackstagePassUpdatePolicy implements UpdatePolicy {
+class BackstagePassUpdatePolicy extends DefaultUpdatePolicy {
 
     @Override
-    public void update(Item item) {
-        decreaseSellIn(item);
+    void updateQuality(Item item) {
         increaseQuality(item);
         if (item.sellIn < 10) {
             increaseQuality(item);
@@ -16,8 +13,10 @@ class BackstagePassUpdatePolicy implements UpdatePolicy {
         if (item.sellIn < 5) {
             increaseQuality(item);
         }
-        if (isAfterSellInDate(item)) {
-            item.quality = 0;
-        }
+    }
+
+    @Override
+    void updateQualityAfterSellInDate(Item item) {
+        item.quality = 0;
     }
 }
