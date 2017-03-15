@@ -10,35 +10,48 @@ public class GildedRose {
     public void updateQuality() {
         for (Item item : items) {
             if (isSulfuras(item)) {
-                // Legendary items never change!
+                updateSulfuras(item);
             } else if (isAgedBrie(item)) {
-                decreaseSellIn(item);
-                increaseQuality(item);
-
-                if (isAfterSellInDate(item)) {
-                    increaseQuality(item);
-                }
+                updateAgedBrie(item);
             } else if (isBackstagePass(item)) {
-                decreaseSellIn(item);
-                increaseQuality(item);
-                if (item.sellIn < 10) {
-                    increaseQuality(item);
-                }
-                if (item.sellIn < 5) {
-                    increaseQuality(item);
-                }
-
-                if (isAfterSellInDate(item)) {
-                    item.quality = 0;
-                }
+                updateBackstagePass(item);
             } else {
-                decreaseSellIn(item);
-                decreaseQuality(item);
-
-                if (isAfterSellInDate(item)) {
-                    decreaseQuality(item);
-                }
+                updateDefault(item);
             }
+        }
+    }
+
+    private static void updateSulfuras(Item unused) {
+        // Legendary items never change!
+    }
+
+    private static void updateAgedBrie(Item item) {
+        decreaseSellIn(item);
+        increaseQuality(item);
+        if (isAfterSellInDate(item)) {
+            increaseQuality(item);
+        }
+    }
+
+    private static void updateBackstagePass(Item item) {
+        decreaseSellIn(item);
+        increaseQuality(item);
+        if (item.sellIn < 10) {
+            increaseQuality(item);
+        }
+        if (item.sellIn < 5) {
+            increaseQuality(item);
+        }
+        if (isAfterSellInDate(item)) {
+            item.quality = 0;
+        }
+    }
+
+    private static void updateDefault(Item item) {
+        decreaseSellIn(item);
+        decreaseQuality(item);
+        if (isAfterSellInDate(item)) {
+            decreaseQuality(item);
         }
     }
 
