@@ -4,20 +4,20 @@ class UpdatePolicies {
 
     private static final UpdatePolicy
         DEFAULT = new DefaultUpdatePolicy(),
-        SULFURAS = new SulfurasUpdatePolicy(),
-        AGED_BRIE = new AgedBrieUpdatePolicy(),
+        LEGENDARY_ITEM = new LegendaryItemUpdatePolicy(),
+        QUALITY_INCREASES_OVER_TIME = new QualityIncreasesOverTimeUpdatePolicy(),
         BACKSTAGE_PASS = new BackstagePassUpdatePolicy(),
-        CONJURED_ITEM = new ConjuredItemUpdatePolicy();
+        QUALITY_DECREASES_TWICE_AS_FAST = new QualityDecreasesTwiceAsFastUpdatePolicy();
 
     UpdatePolicy findApplicableUpdatePolicy(Item item) {
         if (isSulfuras(item)) {
-            return SULFURAS;
+            return LEGENDARY_ITEM;
         } else if (isAgedBrie(item)) {
-            return AGED_BRIE;
+            return QUALITY_INCREASES_OVER_TIME;
         } else if (isBackstagePass(item)) {
             return BACKSTAGE_PASS;
         } else if (isConjured(item)) {
-            return CONJURED_ITEM;
+            return QUALITY_DECREASES_TWICE_AS_FAST;
         }
         return DEFAULT;
     }
