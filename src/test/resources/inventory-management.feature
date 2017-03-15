@@ -109,3 +109,25 @@ Feature: Gilded Rose Inventory management
             | name                                      | sellIn | quality |
             | Backstage passes to a TAFKAL80ETC concert | 0      | 4       |
             | Backstage passes to a TAFKAL80ETC concert | -1     | 0       |
+
+    Scenario: the quality of "Conjured" items decreases twice as fast as normal
+        Given I register the following items in the inventory
+            | name                            | sellIn | quality |
+            | Conjured +5 Dexterity Vest      | 4      | 5       |
+            | Conjured Elixir of the Mongoose | 3      | 6       |
+        When 1 day passes
+        Then the inventory holds the following items
+            | name                            | sellIn | quality |
+            | Conjured +5 Dexterity Vest      | 3      | 3       |
+            | Conjured Elixir of the Mongoose | 2      | 4       |
+
+    Scenario: the quality of "Conjured" items decreases after its sell-in date
+        Given I register the following items in the inventory
+            | name                            | sellIn | quality |
+            | Conjured +5 Dexterity Vest      | 0      | 5       |
+            | Conjured Elixir of the Mongoose | 0      | 6       |
+        When 1 day passes
+        Then the inventory holds the following items
+            | name                            | sellIn | quality |
+            | Conjured +5 Dexterity Vest      | -1     | 1       |
+            | Conjured Elixir of the Mongoose | -1     | 2       |
