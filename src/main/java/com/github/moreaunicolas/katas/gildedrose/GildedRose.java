@@ -22,6 +22,8 @@ public class GildedRose {
             updatePolicy = new AgedBrieUpdatePolicy();
         } else if (isBackstagePass(item)) {
             updatePolicy = new BackstagePassUpdatePolicy();
+        } else if (isConjured(item)) {
+            updatePolicy = new ConjuredItemUpdatePolicy();
         }
         return updatePolicy;
     }
@@ -36,5 +38,9 @@ public class GildedRose {
 
     private static boolean isSulfuras(Item item) {
         return item.name.equals("Sulfuras, Hand of Ragnaros");
+    }
+
+    private static boolean isConjured(Item item) {
+        return item.name.startsWith("Conjured ");
     }
 }
